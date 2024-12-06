@@ -5,6 +5,3 @@ export type TAcademicDepartment ={
     academicFaculty: Types.ObjectId,
 
 }
-
-
-hi hello

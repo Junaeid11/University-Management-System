@@ -6,7 +6,8 @@ import { academicDepartmentControllers } from './AD.controller';
 const router = express.Router();
 
 
-router.post('/create-academic-department',validateRequest(AcademicDepartmentValidation.createAcademicDepartmentValidationSchema), academicDepartmentControllers.createAcademicDepartment)
+router.post('/create-academic-department',//validateRequest(AcademicDepartmentValidation.createAcademicDepartmentValidationSchema), 
+  academicDepartmentControllers.createAcademicDepartment)
 router.get('/', academicDepartmentControllers.getAllAcademicDepartments);
 router.get(
     '/:departmentId',
@@ -21,8 +22,7 @@ router.get(
     academicDepartmentControllers.updateAcademicDepartment,
   );
   
-
-
+  
 
 
 

@@ -17,7 +17,7 @@ const updateAcademicDepartmentValidationSchema = z.object({
     }),
     academicFaculty: z.string({
       required_error: "Academic Faculty is required"
-    })
+    }).optional()
   })
 })
 export const AcademicDepartmentValidation = {
