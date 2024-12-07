@@ -7,6 +7,8 @@ import { TStudent } from './student.interface';
 import { Student } from './student.model';
 import { APPerror } from '../../errors/AppError';
 import { User } from '../User/user.model';
+import QueryBuilder from '../../builder/querybuilder';
+import { studentSearchableFields } from './student.constant';
 
 
 
@@ -96,13 +98,19 @@ console.log(modifiedUpdatedStudentData);
   return result;
 };
 
-const getAllStudentsFromDB = async () => {
-  const result = await Student.find().populate('admissionSemester').populate('academicDepartment').populate({
-    path: 'academicDepartment',
-    populate:{
-     path: 'academicFaculty'
-    }
-  });
+const getAllStudentsFromDB = async (query: Record<string,unknown>) => {
+  const studentQuery = new QueryBuilder(
+    Student.find()
+      .populate('admissionSemester')
+      .populate({
+        path: 'academicDepartment',
+        populate: {
+          path: 'academicFaculty',
+        },
+      }),
+    query,
+  ).search(studentSearchableFields).filter().sort().paginate().fields();
+const result = await studentQuery.modelQuery;
   return result;
 }
 

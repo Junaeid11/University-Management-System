@@ -173,6 +173,9 @@ studentSchema.statics.isUserExists = async function(id: string){
     const exitingUser = await Student.findOne({id});
     return exitingUser;
 }
+studentSchema.virtual('fullName').get(function(){
+    return this?.name?.firstName + this?.name?.middleName + this?.name?.lastName;
+})
 
 
 const Student = model<TStudent, StudentModel>('Student', studentSchema);

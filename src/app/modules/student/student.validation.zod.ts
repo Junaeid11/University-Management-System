@@ -84,7 +84,7 @@ export const createStudentValidationSchema = z.object({
       email: z
         .string()
         .nonempty('Email is required.')
-        .email('Vhai tmr email Vul thik koro'),
+        .email('Vhai tmr email Vul thik koro') ,
       contactNumber: z.string().nonempty('Contact number is required.'),
       emergencyContactNumber: z.string().optional(),
       bloodGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'], {

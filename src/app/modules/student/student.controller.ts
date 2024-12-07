@@ -32,7 +32,8 @@ const createStudent = catchAsync(async (req, res) => {
     });
 })
 const getAllStudent = catchAsync(async (req, res) => {
-    const result = await StudentService.getAllStudentsFromDB();
+
+    const result = await StudentService.getAllStudentsFromDB(req.query);
     sendResponse(res, {
       statusCode: httpStatus.OK,
       message: 'All students retrieved successfully',
