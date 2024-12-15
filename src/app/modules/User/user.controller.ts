@@ -16,6 +16,33 @@ const createStudent = catchAsync(async (req: Request,res: Response) =>{
    })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
  });
+ const createFaculty = catchAsync(async (req, res) => {
+    const { password, faculty: facultyData } = req.body;
+  
+    const result = await UserService.createFacultyIntoDB(password, facultyData);
+  
+    sendResponse(res, {
+      statusCode: http.OK,
+      success: true,
+      message: 'Faculty is created successfully',
+      data: result,
+    });
+  });
+  
+  const createAdmin = catchAsync(async (req, res) => {
+    const { password, admin: adminData } = req.body;
+  
+    const result = await UserService.createAdminIntoDB(password, adminData);
+  
+    sendResponse(res, {
+      statusCode: http.OK,
+      success: true,
+      message: 'Admin is created succesfully',
+      data: result,
+    });
+  });
 export const UserController = {
-    createStudent
+    createStudent,
+    createFaculty,
+    createAdmin
 }

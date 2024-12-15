@@ -6,9 +6,9 @@ import { updateStudentValidationSchema } from "./student.validation.zod";
 const router = express.Router();
 // we will add the controller 
 //router.post('/create-student', StudentController.createStudent);
-router.get('/:studentId', StudentController.getSingleStudent);
-router.patch('/:studentId', validateRequest(updateStudentValidationSchema), StudentController.updateStudent);
+router.get('/:id', StudentController.getSingleStudent);
+router.patch('/:id', validateRequest(updateStudentValidationSchema), StudentController.updateStudent);
 router.get('/', StudentController.getAllStudent);
 
-router.delete('/:studentId', StudentController.deleteStudent);
+router.delete('/:id', StudentController.deleteStudent);
 export const StudentRoute = router;
